@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开云 · 信息整合与稳定入口</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+            background: #f3f4f6;
+            color: #1f2937;
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+        .page {
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+
+        /* hero 区 */
+        .hero {
+            background: linear-gradient(145deg, #ffffff 0%, #f9fafb 100%);
+            border-radius: 32px;
+            padding: 4rem 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            color: #111827;
+            margin-bottom: 1rem;
+        }
+        .hero h1 span {
+            font-weight: 600;
+            color: #0a7c5a;
+        }
+        .hero p {
+            font-size: 1.15rem;
+            color: #4b5563;
+            max-width: 640px;
+            margin: 0 auto 0.5rem;
+        }
+        .hero .meta-tip {
+            display: inline-block;
+            margin-top: 1.2rem;
+            font-size: 0.9rem;
+            background: #ecfdf3;
+            color: #0b5e41;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            border: 1px solid #b2e0ce;
+        }
+
+        /* 卡片通用 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin-bottom: 2.5rem;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem 1.8rem;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02), 0 1px 4px rgba(0, 0, 0, 0.02);
+            transition: box-shadow 0.2s;
+        }
+        .card:hover {
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.03);
+        }
+        .card h2 {
+            font-size: 1.4rem;
+            font-weight: 550;
+            margin-bottom: 0.8rem;
+            color: #1f2937;
+            border-left: 4px solid #0a7c5a;
+            padding-left: 0.9rem;
+        }
+        .card p, .card li {
+            color: #374151;
+            font-size: 0.98rem;
+        }
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .card ul li {
+            padding: 0.35rem 0;
+            padding-left: 1.3rem;
+            position: relative;
+        }
+        .card ul li::before {
+            content: "·";
+            position: absolute;
+            left: 0.2rem;
+            color: #0a7c5a;
+            font-weight: 700;
+        }
+
+        /* 说明区 (单宽卡片) */
+        .explain-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2.2rem 2.5rem;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+            margin-bottom: 2.5rem;
+        }
+        .explain-card h2 {
+            font-size: 1.4rem;
+            font-weight: 550;
+            margin-bottom: 1rem;
+            color: #1f2937;
+            border-left: 4px solid #0a7c5a;
+            padding-left: 0.9rem;
+        }
+        .explain-card p {
+            color: #374151;
+            margin-bottom: 0.7rem;
+        }
+        .explain-card strong {
+            color: #0a7c5a;
+        }
+
+        /* FAQ 摘要区 */
+        .faq-summary {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem 2.5rem;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+            margin-bottom: 2.5rem;
+        }
+        .faq-summary h2 {
+            font-size: 1.4rem;
+            font-weight: 550;
+            margin-bottom: 1.2rem;
+            color: #1f2937;
+            border-left: 4px solid #0a7c5a;
+            padding-left: 0.9rem;
+        }
+        .faq-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #f1f3f5;
+        }
+        .faq-item:last-child {
+            border-bottom: 0;
+        }
+        .faq-item .q {
+            font-weight: 500;
+            color: #111827;
+            margin-bottom: 0.15rem;
+        }
+        .faq-item .a {
+            color: #4b5563;
+            font-size: 0.95rem;
+        }
+
+        /* 底部链接 */
+        .footer-links {
+            text-align: center;
+            padding: 1.8rem 0 0.8rem;
+            border-top: 1px solid #d8dce0;
+            margin-top: 1rem;
+        }
+        .footer-links p {
+            color: #5f6873;
+            font-size: 0.95rem;
+        }
+        .footer-links a {
+            color: #0a7c5a;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s;
+        }
+        .footer-links a:hover {
+            border-bottom-color: #0a7c5a;
+        }
+
+        /* 响应式 */
+        @media (max-width: 700px) {
+            .hero { padding: 2.8rem 1.5rem; }
+            .hero h1 { font-size: 2rem; }
+            .card-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .explain-card { padding: 1.8rem 1.5rem; }
+            .faq-summary { padding: 1.8rem 1.5rem; }
+        }
+        @media (max-width: 480px) {
+            body { padding: 1rem 0.8rem; }
+            .hero h1 { font-size: 1.7rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- hero 区 -->
+    <section class="hero">
+        <h1>信息通道 · <span>开云</span></h1>
+        <p>一个稳定的内容聚合与索引入口，帮助用户快速定位感兴趣的资源页与知识板块。不依赖算法推荐，更强调结构化的信息引导。</p>
+        <div class="meta-tip">基于静态页面 · 持续优化访问路径</div>
+    </section>
+
+    <!-- 优势区 (两个卡片) -->
+    <div class="card-grid">
+        <div class="card">
+            <h2>简洁的导航结构</h2>
+            <p>页面分类遵循内容逻辑，剔除冗余广告与弹窗。每个板块的命名直接对应内部主题，减少用户寻找时的认知负荷。</p>
+            <ul>
+                <li>分区明确，主次清晰</li>
+                <li>无追踪脚本与无关挂件</li>
+                <li>适合作为常驻书签</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h2>稳定的链接体系</h2>
+            <p>所有内部链接均采用相对路径与固定别名，避免因动态参数变化导致失效。长期维护，定期检查可达性。</p>
+            <ul>
+                <li>永久链接 (Permalink) 风格</li>
+                <li>更新时保留旧路径重定向</li>
+                <li>可配合本地文档使用</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 说明区 (从稳定入口角度) -->
+    <div class="explain-card">
+        <h2>为什么关注入口稳定性？</h2>
+        <p>一个信息站点的长期价值，很大程度上取决于入口的持久性与结构透明度。如果链接轻易失效、导航频繁变动，用户积累的认知成本就会归零。<strong>开云</strong>在规划之初便将链接抽象为“资源标识”，每一页都带有固定索引前缀，内部跳转不依赖 session 或临时参数。</p>
+        <p>此外，页面本身不强制注册或登录即可浏览主要内容。对于需要深度查阅的用户，可直接将页面地址收藏至浏览器或笔记工具，再次回访时依然指向同一份内容。这种设计思路常见于知识库与个人 wiki，而 <a href="https://site-zh-ky.com">开云</a> 将其作为基础体验标准。</p>
+        <p style="margin-top: 0.8rem; color: #4b5563;">—— 入口即结构，结构即体验。</p>
+    </div>
+
+    <!-- FAQ 摘要区 (偏知识型回答) -->
+    <div class="faq-summary">
+        <h2>常见疑问 · 摘要</h2>
+        <div class="faq-item">
+            <div class="q">开云 的内容主要覆盖哪些方向？</div>
+            <div class="a">目前围绕信息索引、工具链记录、轻量阅读材料三个模块展开，后续会根据资源粒度继续细分。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">页面是否提供搜索功能？</div>
+            <div class="a">当前版本以静态页面为主，站内搜索基于前端索引实现，支持关键词匹配；更复杂的检索建议使用外部搜索引擎加 site 限定。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">如何反馈链接异常或内容建议？</div>
+            <div class="a">可参考页面底部关联信息，或通过项目仓库提交议题。后续会考虑建立轻量反馈通道。</div>
+        </div>
+    </div>
+
+    <!-- 底部链接 (自然嵌入句子) -->
+    <div class="footer-links">
+        <p>本页信息索引由 <a href="https://site-zh-ky.com">开云</a> 维护 · 持续整合可直达的资源节点</p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #88929e;">版本迭代记录 · 链接结构说明 · 内容许可</p>
+    </div>
+
+</div>
+</body>
+</html>
